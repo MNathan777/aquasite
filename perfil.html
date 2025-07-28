@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meu Perfil | Aqua Site</title>
+  <link rel="stylesheet" href="perfil.css" />
+  <link rel="icon" href="img/idophin.png" type="image/png" />
+</head>
+<body>
+  <div class="perfil-container">
+    <button class="btn-voltar" onclick="voltar()">←</button>
+    <h1>EU</h1>
+    <hr />
+
+    <div class="perfil-conteudo">
+      <img src="img/avatar.png" alt="Avatar" class="avatar" />
+      <div class="nome">
+        <h2><span class="bold">Miguel</span> Nathan</h2>
+      </div>
+    </div>
+
+    <div class="formulario">
+      <div class="campo-editavel">
+        <label>Email:</label>
+        <span contenteditable="true" id="email">mmmmmm@gmail.com</span>
+        <button onclick="editarCampo('email')">✏️</button>
+      </div>
+
+      <div class="campo-editavel">
+        <label>Data de nasc:</label>
+        <span contenteditable="true" id="nascimento">28/07/2009</span>
+        <button onclick="editarCampo('nascimento')">✏️</button>
+      </div>
+
+      <div class="campo-editavel descricao">
+        <label>Sobre:</label>
+        <p contenteditable="true" id="descricao">
+          Sou Miguel, gosto de aprender, trabalhar em equipe e sou apaixonado por animais aquáticos.
+        </p>
+        <button onclick="editarCampo('descricao')">✏️</button>
+      </div>
+    </div>
+
+    <hr />
+  </div>
+
+  <script src="perfil.js"></script>
+</body>
+</html>

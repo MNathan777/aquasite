@@ -1,0 +1,313 @@
+:root {
+    --main-color: #0172B2;
+    --black: #fff;
+   --bg: #000000;
+   --border: 0.1rem solid rgba(255,255,255,0.3);
+    font-size: 18px;
+
+}
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: 0.2s linear ;
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+     background: var(--bg);
+    
+} 
+.cabecalho{
+    background: var(--bg);
+    color: var(--black);
+    position: relative;
+    z-index: 1;
+}
+
+ section {
+    padding: 3rem 2rem;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+    
+.header {
+   position: fixed;
+   top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    border-bottom: var(--border);
+}
+.header section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+.navbar a {
+  margin: 0 1rem;
+  font-size: 1.9rem;
+  color: #ffffff;
+}
+.navbar a:hover{
+    color: var(--main-color);
+    border-bottom: 0.1rem solid var(--main-color);
+    padding-bottom: 0.5rem;
+    font-size: 2.0rem;
+}
+
+.icons svg{
+    margin: 1rem;
+    cursor: pointer;
+}
+
+.icons svg:hover {
+   width: 60px;
+   height: 60px;
+}
+.btn {
+  background: var(--main-color);
+  color: #fffafa;
+  padding: 1rem 3rem;
+  font-size: 1.7rem;
+  cursor: pointer;
+  margin-top: 1rem;
+ display: inline-block;
+}
+.home-container {
+    background: url(./img/homefundo2.jpg);
+    background-position: center;
+    background-size: cover;
+    }
+.home-container section {
+       display: flex;
+        align-items: center;
+        height: 90vh; 
+ }       
+
+ .content h3{
+    color: #fff;
+    font-size: 4rem;
+ }
+ .content p {
+    color: #fff;
+    font-size: 16px;
+    margin: 100;
+    line-height: 1.8;
+    padding: 1rem 0;
+ }
+ /* Fundo estilo oceano com movimento */
+.login-body {
+  height: 100vh;
+  background: linear-gradient(160deg, #001f3f, #003f5c, #005f73);
+  background-size: 400% 400%;
+  animation: backgroundMove 15s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+@keyframes backgroundMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.login-container {
+  position: relative;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 2.5rem;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 20px rgba(0,255,255,0.1);
+  text-align: center;
+  border: var(--border);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease;
+}
+
+.login-container:hover {
+  transform: scale(1.02);
+}
+
+.login-container h2 {
+  font-size: 2.5rem;
+  color: #00b4d8;
+  margin-bottom: 1.5rem;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.login-container input {
+  width: 100%;
+  padding: 1rem;
+  margin: 10px 0;
+  border-radius: 10px;
+  background: #022b3a;
+  color: #fff;
+  font-size: 1.1rem;
+  border: 1px solid transparent;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.login-container input:focus {
+  border: 1px solid #00b4d8;
+  box-shadow: 0 0 8px #00b4d8;
+}
+
+.login-container .btn {
+  width: 100%;
+  font-size: 1.3rem;
+  background: var(--main-color);
+  border-radius: 8px;
+  padding: 0.9rem;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+
+.login-container .btn:hover {
+  background: #0077b6;
+}
+
+.login-container a {
+  color: #90e0ef;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#status-msg {
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+/* Botão redondo voltar */
+.btn-voltar {
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  background: #003f5c;
+  border: 2px solid #00b4d8;
+  color: #00b4d8;
+  font-size: 1.3rem;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0,180,216,0.3);
+  transition: background 0.3s, transform 0.3s;
+}
+
+.btn-voltar:hover {
+  background: #00b4d8;
+  color: #fff;
+  transform: scale(1.1);
+}
+.btn-voltar-animado {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid var(--main-color);
+  background: radial-gradient(circle at 30% 30%, #00b4d8 20%, #0077b6 100%);
+  color: white;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0, 180, 216, 0.4);
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.btn-voltar-animado:hover {
+  transform: scale(1.1) rotate(-10deg);
+  background: radial-gradient(circle at 30% 30%, #48cae4, #0096c7);
+  box-shadow: 0 0 15px rgba(72, 202, 228, 0.7);
+}
+
+/* Animação tipo pulsar água */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 10px rgba(0, 180, 216, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 180, 216, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(0, 180, 216, 0.4);
+  }
+}
+.home-container {
+    background: url(./img/homefundo2.jpg);
+    background-position: center;
+    background-size: cover;
+    animation: fundoOceano 30s infinite linear;
+}
+
+@keyframes fundoOceano {
+    0% {
+        background-position: center 0;
+    }
+    50% {
+        background-position: center 20px;
+    }
+    100% {
+        background-position: center 0;
+    }
+}
+.btn {
+  background: var(--main-color);
+  color: #fffafa;
+  padding: 1rem 3rem;
+  font-size: 1.7rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  display: inline-block;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 180, 216, 0.4);
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  transition: left 0.5s;
+  z-index: 0;
+}
+
+.btn:hover::before {
+  left: 0;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 180, 216, 0.6);
+}
+
+
+
