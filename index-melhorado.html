@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="img/idophin.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AquaSite - Explore o Mundo Marinho</title>
+  <meta name="description" content="Descubra as maravilhas dos oceanos, aprenda sobre vida marinha e conecte-se com uma comunidade apaixonada pela conservação oceânica.">
+  <meta name="keywords" content="oceano, vida marinha, conservação, educação, ecossistema, aquático">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aquasite.com/">
+  <meta property="og:title" content="AquaSite - Explore o Mundo Marinho">
+  <meta property="og:description" content="Descubra as maravilhas dos oceanos e aprenda sobre vida marinha.">
+  <meta property="og:image" content="img/logo.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://aquasite.com/">
+  <meta property="twitter:title" content="AquaSite - Explore o Mundo Marinho">
+  <meta property="twitter:description" content="Descubra as maravilhas dos oceanos e aprenda sobre vida marinha.">
+  <meta property="twitter:image" content="img/logo.png">
+
+  <link rel="stylesheet" href="index-melhorado.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div id="index-melhorado-root"></div>
+
+  <!-- React e ReactDOM via CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+  <!-- Babel para usar JSX -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Componentes da Index Melhorada -->
+  <script type="text/babel" src="index-melhorado.jsx"></script>
+
+  <!-- Inicialização da aplicação -->
+  <script type="text/babel">
+    const indexMelhoradoRoot = ReactDOM.createRoot(document.getElementById('index-melhorado-root'));
+    indexMelhoradoRoot.render(React.createElement(AppMelhorado));
+  </script>
+
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "AquaSite",
+    "description": "Plataforma educativa sobre vida marinha e conservação oceânica",
+    "url": "https://aquasite.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://aquasite.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+</body>
+</html>

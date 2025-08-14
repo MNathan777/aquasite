@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="img/idophin.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AquaSite</title>
+  <link rel="stylesheet" href="home.css">
+</head>
+<body class="login-body">
+  <div id="home-root"></div>
+
+  <!-- React e ReactDOM via CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+  <!-- Babel para usar JSX -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Componentes React -->
+  <script type="text/babel" src="components.jsx"></script>
+
+  <!-- Inicialização da aplicação home -->
+  <script type="text/babel">
+    const homeRoot = ReactDOM.createRoot(document.getElementById('home-root'));
+    homeRoot.render(React.createElement(HomeApp));
+  </script>
+</body>
+</html>

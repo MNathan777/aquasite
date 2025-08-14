@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="img/idophin.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AquaSite - React Demo</title>
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="react-styles.css">
+</head>
+<body class="login-body">
+  <div id="react-demo-root"></div>
+
+  <!-- React e ReactDOM via CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+  <!-- Babel para usar JSX -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Componentes React -->
+  <script type="text/babel" src="components.jsx"></script>
+  <script type="text/babel" src="advanced-components.jsx"></script>
+
+  <!-- Inicialização da aplicação demo -->
+  <script type="text/babel">
+    const demoRoot = ReactDOM.createRoot(document.getElementById('react-demo-root'));
+    demoRoot.render(React.createElement(AdvancedApp));
+  </script>
+</body>
+</html>

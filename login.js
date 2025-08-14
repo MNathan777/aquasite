@@ -38,8 +38,12 @@ form.addEventListener('submit', (e) => {
   if (isLogin) {
     const storedUser = localStorage.getItem(username);
     if (storedUser && JSON.parse(storedUser).password === password) {
-      window.location.href = "home.html";
-
+      localStorage.setItem('currentUser', username);
+      statusMsg.textContent = `Bem-vindo, ${username}!`;
+      statusMsg.style.color = "lightgreen";
+      setTimeout(() => {
+        window.location.href = "home-melhorado.html";
+      }, 1500);
     } else {
       statusMsg.textContent = 'Usuário ou senha incorretos.';
       statusMsg.style.color = "red";
