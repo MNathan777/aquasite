@@ -3,51 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="sobre.css" />
+  <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="img/idophin.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700;900&display=swap" rel="stylesheet">
   <title>Sobre Nós | Aqua Site</title>
 </head>
-<body class="sobre-body">
+<body>
+  <div id="sobre-root"></div>
 
-  <!-- Botão Voltar -->
-  <button class="btn-voltar-animado" onclick="voltar()" aria-label="Voltar">←</button>
+  <!-- React e ReactDOM via CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
 
-  <div class="sobre-container">
-    <h1>Quem somos</h1>
-    <p class="descricao">
-      O <strong>Aqua Site</strong> nasceu com a missão de unir tecnologia, conscientização e paixão pelo mundo marinho.
-      Criamos uma plataforma onde você pode compartilhar, explorar e proteger a beleza dos oceanos.
-    </p>
+  <!-- Babel para usar JSX -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    <div class="blocos">
-      <div class="bloco">
-        <h2>Nossa História</h2>
-        <p>
-          Nós somos um grupo apaixonado pela vida marinha e dedicados à preservação dos oceanos. Nosso trabalho é promover a conscientização sobre a importância da biodiversidade marinha, incentivando ações que garantam a proteção dos ecossistemas aquáticos. Combinamos ciência, 
-          educação e inovação para preservar os habitats marinhos e os seres que dependem deles, desde os recifes de corais até as profundezas dos mares.
-        </p>
-      </div>
+  <!-- Componentes do Sobre -->
+  <script type="text/babel" src="sobre-melhorado.jsx"></script>
 
-      <div class="bloco">
-        <h2>Nosso Objetivo</h2> 
-        <p>
-          Promover educação ambiental, preservar os oceanos e aproximar as pessoas da natureza — tudo isso com tecnologia acessível e interativa.
-        </p>
-      </div>
-
-      <div class="bloco">
-        <h2>Junte-se a Nós</h2>
-        <p>
-          Seja parte da nossa comunidade. Compartilhe fotos, histórias e ideias. O mar agradece — e nós também.
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    function voltar() {
-      window.history.back();
-    }
+  <!-- Inicialização da aplicação -->
+  <script type="text/babel">
+    const sobreRoot = ReactDOM.createRoot(document.getElementById('sobre-root'));
+    sobreRoot.render(React.createElement(SobreApp));
   </script>
 </body>
 </html>

@@ -4,18 +4,15 @@ const HeroSection = () => {
   const slides = [
     {
       title: "Explore o Mundo Marinho",
-      subtitle: "Descubra as maravilhas dos oceanos",
-      image: "🌊"
+      subtitle: "Descubra as maravilhas dos oceanos"
     },
     {
       title: "Vida Submarina",
-      subtitle: "Conheça criaturas incríveis",
-      image: "🐠"
+      subtitle: "Conheça criaturas incríveis"
     },
     {
       title: "Conservação Oceânica",
-      subtitle: "Proteja nossos mares",
-      image: "🐢"
+      subtitle: "Proteja nossos mares"
     }
   ];
 
@@ -29,12 +26,11 @@ const HeroSection = () => {
   return React.createElement('section', { className: 'hero-section' },
     React.createElement('div', { className: 'hero-content' },
       React.createElement('div', { className: 'hero-text' },
-        React.createElement('div', { className: 'hero-emoji' }, slides[currentSlide].image),
         React.createElement('h1', { className: 'hero-title' }, slides[currentSlide].title),
         React.createElement('p', { className: 'hero-subtitle' }, slides[currentSlide].subtitle),
         React.createElement('div', { className: 'hero-buttons' },
-          React.createElement('a', { href: 'login-react.html', className: 'btn btn-primary' }, '🌊 Começar Jornada'),
-          React.createElement('a', { href: 'curiosidades-melhorado.html', className: 'btn btn-secondary' }, '🐠 Explorar Agora')
+          React.createElement('a', { href: 'login-react.html', className: 'btn btn-primary' }, 'Começar Jornada'),
+          React.createElement('a', { href: 'curiosidades-melhorado.html', className: 'btn btn-secondary' }, 'Explorar Agora')
         )
       )
     ),
@@ -53,10 +49,10 @@ const HeroSection = () => {
 // Componente de estatísticas
 const StatsSection = () => {
   const [stats, setStats] = React.useState([
-    { number: 0, target: 71, label: "% da Terra é oceano", icon: "🌍" },
-    { number: 0, target: 230000, label: "Espécies marinhas conhecidas", icon: "🐟" },
-    { number: 0, target: 95, label: "% dos oceanos inexplorados", icon: "🔍" },
-    { number: 0, target: 1000, label: "Usuários ativos", icon: "👥" }
+    { number: 0, target: 71, label: "% da Terra é oceano" },
+    { number: 0, target: 230000, label: "Espécies marinhas conhecidas" },
+    { number: 0, target: 95, label: "% dos oceanos inexplorados" },
+    { number: 0, target: 1000, label: "Usuários ativos" }
   ]);
 
   React.useEffect(() => {
@@ -85,7 +81,6 @@ const StatsSection = () => {
       React.createElement('div', { className: 'stats-grid' },
         stats.map((stat, index) =>
           React.createElement('div', { key: index, className: 'stat-card' },
-            React.createElement('div', { className: 'stat-icon' }, stat.icon),
             React.createElement('div', { className: 'stat-number' }, 
               stat.number.toLocaleString('pt-BR')
             ),
@@ -101,32 +96,26 @@ const StatsSection = () => {
 const FeaturesSection = () => {
   const features = [
     {
-      icon: "🐋",
       title: "Vida Marinha",
       description: "Explore milhares de espécies marinhas com informações detalhadas e curiosidades fascinantes."
     },
     {
-      icon: "🌊",
       title: "Ecossistemas",
       description: "Descubra diferentes ecossistemas oceânicos e sua importância para o planeta."
     },
     {
-      icon: "📚",
       title: "Educação",
       description: "Aprenda sobre conservação marinha e como proteger nossos oceanos."
     },
     {
-      icon: "👥",
       title: "Comunidade",
       description: "Conecte-se com outros entusiastas da vida marinha e compartilhe experiências."
     },
     {
-      icon: "📸",
       title: "Galeria",
       description: "Veja imagens incríveis do mundo submarino capturadas por mergulhadores."
     },
     {
-      icon: "🎯",
       title: "Missões",
       description: "Participe de desafios educativos e contribua para a pesquisa marinha."
     }
@@ -138,7 +127,6 @@ const FeaturesSection = () => {
       React.createElement('div', { className: 'features-grid' },
         features.map((feature, index) =>
           React.createElement('div', { key: index, className: 'feature-card' },
-            React.createElement('div', { className: 'feature-icon' }, feature.icon),
             React.createElement('h3', null, feature.title),
             React.createElement('p', null, feature.description)
           )
@@ -201,13 +189,13 @@ const HeaderMelhorado = () => {
         React.createElement('span', { className: 'logo-text' }, 'AquaSite')
       ),
       React.createElement('nav', { className: `navbar ${isMenuOpen ? 'active' : ''}` },
-        React.createElement('a', { href: '#home' }, '🏠 Início'),
-        React.createElement('a', { href: 'sobre.html' }, '📖 Sobre'),
-        React.createElement('a', { href: 'curiosidades-melhorado.html' }, '🐠 Curiosidades'),
-        React.createElement('a', { href: 'http://wa.me/551140028922' }, '📞 Contato')
+        React.createElement('a', { href: '#home' }, '• Início'),
+        React.createElement('a', { href: 'sobre.html' }, '• Sobre'),
+        React.createElement('a', { href: 'curiosidades-melhorado.html' }, '• Explorar'),
+        React.createElement('a', { href: 'http://wa.me/551140028922' }, '• Contato')
       ),
       React.createElement('div', { className: 'header-actions' },
-        React.createElement('a', { href: 'login-react.html', className: 'btn-login' }, '🚪 Entrar'),
+        React.createElement('a', { href: 'login-react.html', className: 'btn-login' }, '→ Entrar'),
         React.createElement('button', { 
           className: 'menu-toggle',
           onClick: () => setIsMenuOpen(!isMenuOpen)
@@ -222,7 +210,7 @@ const FooterMelhorado = () => {
   return React.createElement('footer', { className: 'footer-melhorado' },
     React.createElement('div', { className: 'footer-container' },
       React.createElement('div', { className: 'footer-section' },
-        React.createElement('h3', null, '🌊 AquaSite'),
+        React.createElement('h3', null, 'AquaSite'),
         React.createElement('p', null, 'Explorando os mistérios dos oceanos e promovendo a conservação marinha.')
       ),
       React.createElement('div', { className: 'footer-section' },
@@ -235,12 +223,12 @@ const FooterMelhorado = () => {
       ),
       React.createElement('div', { className: 'footer-section' },
         React.createElement('h4', null, 'Contato'),
-        React.createElement('p', null, '📧 contato@aquasite.com'),
-        React.createElement('p', null, '📱 (11) 4002-8922')
+        React.createElement('p', null, 'contato@aquasite.com'),
+        React.createElement('p', null, '(11) 4002-8922')
       )
     ),
     React.createElement('div', { className: 'footer-bottom' },
-      React.createElement('p', null, '© 2024 AquaSite. Todos os direitos reservados. 🐠')
+      React.createElement('p', null, '© 2024 AquaSite. Todos os direitos reservados.')
     )
   );
 };
@@ -299,7 +287,7 @@ const LoadingScreen = () => {
           React.createElement('div', { className: 'wave wave2' }),
           React.createElement('div', { className: 'wave wave3' })
         ),
-        React.createElement('div', { className: 'logo-text' }, '🌊 AquaSite')
+        React.createElement('div', { className: 'logo-text' }, 'AquaSite')
       ),
       React.createElement('div', { className: 'loading-progress' },
         React.createElement('div', { className: 'progress-bar' },

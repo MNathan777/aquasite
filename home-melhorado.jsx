@@ -1,7 +1,7 @@
 // Hook para posts
 const usePosts = () => {
   const [posts, setPosts] = React.useState([
-    { id: 1, user: '@oceano_lindo', content: 'Olhem só esse pôr do sol sobre o mar! 🌅🌊', likes: 15, time: '2h' },
+    { id: 1, user: '@oceano_lindo', content: 'Olhem só esse pôr do sol sobre o mar!', likes: 15, time: '2h', image: './img/pordosol.jpg' },
     { id: 2, user: '@vida_submarina', content: 'Hoje vi uma tartaruga marinha nadando entre os corais! 🐢💙', likes: 23, time: '4h' },
     { id: 3, user: '@mergulhador_pro', content: 'Descobri um novo recife de corais! As cores são incríveis! 🐠🌈', likes: 8, time: '6h' }
   ]);
@@ -35,13 +35,14 @@ const Post = ({ post, onLike }) => {
       React.createElement('span', { className: 'post-time' }, post.time)
     ),
     React.createElement('p', null, post.content),
+    post.image && React.createElement('img', { src: post.image, alt: 'Post image', style: { width: '100%', borderRadius: '8px', marginTop: '12px' } }),
     React.createElement('div', { className: 'post-actions' },
       React.createElement('button', { 
         onClick: () => onLike(post.id),
         className: 'like-btn'
-      }, `❤️ ${post.likes}`),
-      React.createElement('button', { className: 'comment-btn' }, '💬 Comentar'),
-      React.createElement('button', { className: 'share-btn' }, '🔄 Compartilhar')
+      }, `♥ ${post.likes}`),
+      React.createElement('button', { className: 'comment-btn' }, 'Comentar'),
+      React.createElement('button', { className: 'share-btn' }, 'Compartilhar')
     )
   );
 };
@@ -68,7 +69,7 @@ const CreatePost = ({ onSubmit }) => {
         placeholder: 'Compartilhe algo sobre o oceano...',
         rows: 3
       }),
-      React.createElement('button', { type: 'submit', className: 'post-btn' }, '🌊 Publicar')
+      React.createElement('button', { type: 'submit', className: 'post-btn' }, 'Publicar •')
     )
   );
 };
@@ -102,7 +103,7 @@ const Chat = () => {
   };
 
   return React.createElement('div', { className: 'chat-container' },
-    React.createElement('h3', null, '💬 Chat Oceânico'),
+    React.createElement('h3', null, 'Chat Oceânico'),
     React.createElement('div', { className: 'chat-messages' },
       messages.map(msg =>
         React.createElement('div', { key: msg.id, className: 'message' },
@@ -120,25 +121,25 @@ const Chat = () => {
         onKeyPress: handleKeyPress,
         placeholder: 'Digite uma mensagem...'
       }),
-      React.createElement('button', { onClick: sendMessage }, '📤')
+      React.createElement('button', { onClick: sendMessage }, 'Enviar')
     )
   );
 };
 
 // Componente de Sidebar com widgets
 const Sidebar = () => {
-  const [weather, setWeather] = React.useState({ temp: '24°C', condition: '🌊 Ondas calmas' });
+  const [weather, setWeather] = React.useState({ temp: '24°C', condition: 'Ondas calmas' });
   const [onlineUsers] = React.useState(['Marina', 'João', 'Ana', 'Pedro']);
 
   return React.createElement('div', { className: 'sidebar' },
     React.createElement('div', { className: 'widget weather-widget' },
-      React.createElement('h4', null, '🌊 Condições do Mar'),
+      React.createElement('h4', null, 'Condições do Mar'),
       React.createElement('p', null, weather.temp),
       React.createElement('p', null, weather.condition)
     ),
     
     React.createElement('div', { className: 'widget users-widget' },
-      React.createElement('h4', null, '👥 Usuários Online'),
+      React.createElement('h4', null, 'Usuários Online'),
       React.createElement('ul', null,
         onlineUsers.map((user, index) =>
           React.createElement('li', { key: index },
@@ -179,13 +180,13 @@ const HomeMelhorado = () => {
   return React.createElement('div', { className: 'home-container' },
     React.createElement('header', { className: 'home-header' },
       React.createElement('div', { className: 'header-content' },
-        React.createElement('h1', null, '🌊 AquaSite'),
+        React.createElement('h1', null, 'AquaSite'),
         React.createElement('nav', null,
-          React.createElement('a', { href: 'index.html' }, '🏠 Início'),
-          React.createElement('a', { href: 'curiosidades-melhorado.html' }, '🐠 Explorar'),
-          React.createElement('a', { href: 'perfil.html' }, '👤 Perfil'),
+          React.createElement('a', { href: 'index.html' }, '• Início'),
+          React.createElement('a', { href: 'curiosidades-melhorado.html' }, '• Explorar'),
+          React.createElement('a', { href: 'perfil.html' }, '• Perfil'),
           React.createElement('span', { className: 'user-info' }, `Olá, ${currentUser}!`),
-          React.createElement('button', { onClick: logout, className: 'logout-btn' }, '🚪 Sair')
+          React.createElement('button', { onClick: logout, className: 'logout-btn' }, '→ Sair')
         )
       )
     ),

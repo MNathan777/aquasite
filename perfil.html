@@ -4,47 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Meu Perfil | Aqua Site</title>
-  <link rel="stylesheet" href="perfil.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="professional-styles.css" />
   <link rel="icon" href="img/idophin.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="perfil-container">
-    <button class="btn-voltar" onclick="voltar()">←</button>
-    <h1>EU</h1>
-    <hr />
+  <div id="perfil-root"></div>
 
-    <div class="perfil-conteudo">
-      <img src="img/avatar.png" alt="Avatar" class="avatar" />
-      <div class="nome">
-        <h2><span class="bold">Miguel</span> Nathan</h2>
-      </div>
-    </div>
+  <!-- React e ReactDOM via CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
 
-    <div class="formulario">
-      <div class="campo-editavel">
-        <label>Email:</label>
-        <span contenteditable="true" id="email">mmmmmm@gmail.com</span>
-        <button onclick="editarCampo('email')">✏️</button>
-      </div>
+  <!-- Babel para usar JSX -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-      <div class="campo-editavel">
-        <label>Data de nasc:</label>
-        <span contenteditable="true" id="nascimento">28/07/2009</span>
-        <button onclick="editarCampo('nascimento')">✏️</button>
-      </div>
+  <!-- Componentes do Perfil -->
+  <script type="text/babel" src="perfil-melhorado.jsx"></script>
 
-      <div class="campo-editavel descricao">
-        <label>Sobre:</label>
-        <p contenteditable="true" id="descricao">
-          Sou Miguel, gosto de aprender, trabalhar em equipe e sou apaixonado por animais aquáticos.
-        </p>
-        <button onclick="editarCampo('descricao')">✏️</button>
-      </div>
-    </div>
-
-    <hr />
-  </div>
-
-  <script src="perfil.js"></script>
+  <!-- Inicialização da aplicação -->
+  <script type="text/babel">
+    const perfilRoot = ReactDOM.createRoot(document.getElementById('perfil-root'));
+    perfilRoot.render(React.createElement(PerfilApp));
+  </script>
 </body>
 </html>

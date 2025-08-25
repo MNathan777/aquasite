@@ -1,0 +1,258 @@
+/* Estilos profissionais adicionais */
+
+/* Tipografia mais profissional */
+body {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+/* Botões mais profissionais */
+.btn {
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Cards mais limpos */
+.feature-card, .stat-card, .testimonial-card {
+    border-radius: 12px;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+}
+
+/* Navegação mais profissional */
+.navbar a {
+    font-weight: 500;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.navbar a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: none;
+}
+
+/* Header mais limpo */
+.header-melhorado {
+    background: rgba(0, 31, 63, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Estatísticas mais profissionais */
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Testimonials mais limpos */
+.testimonial-text {
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.testimonial-author strong {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.testimonial-author span {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+/* Footer mais profissional */
+.footer-melhorado {
+    background: rgba(0, 15, 31, 0.95);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px 0 20px;
+}
+
+.footer-section h3, .footer-section h4 {
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+/* Formulários mais profissionais */
+input, textarea {
+    font-family: inherit;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.08);
+    padding: 12px 16px;
+    transition: all 0.2s ease;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+    outline: none;
+}
+
+/* Perfil mais profissional */
+.perfil-header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.join-date {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.stats-section {
+    display: flex;
+    gap: 32px;
+    margin: 24px 0;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-item .stat-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    display: block;
+}
+
+.stat-item .stat-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Chat mais profissional */
+.chat-container {
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px;
+}
+
+.chat-messages {
+    max-height: 200px;
+    overflow-y: auto;
+    margin: 16px 0;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.message {
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.message strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.message-time {
+    color: var(--text-muted);
+    font-size: 12px;
+    margin-left: 8px;
+}
+
+/* Posts mais profissionais */
+.post {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.post-header h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.post-time {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.post-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.post-actions button {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 12px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.post-actions button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+/* Responsividade melhorada */
+@media (max-width: 768px) {
+    .stats-section {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
