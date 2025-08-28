@@ -1,19 +1,21 @@
 // Hook para posts
 const usePosts = () => {
   const [posts, setPosts] = React.useState([
-    { id: 1, user: '@oceano_lindo', content: 'Olhem só esse pôr do sol sobre o mar!', likes: 15, time: '2h', image: './img/pordosol.jpg' },
-    { id: 2, user: '@vida_submarina', content: 'Hoje vi uma tartaruga marinha nadando entre os corais! 🐢💙', likes: 23, time: '4h' },
-    { id: 3, user: '@mergulhador_pro', content: 'Descobri um novo recife de corais! As cores são incríveis! 🐠🌈', likes: 8, time: '6h' }
+    { id: 1, user: '@oceano_lindo', content: 'Olhem só esse pôr do sol sobre o mar!', likes: 15, time: '2h', image: './img/pordosol.jpg', comments: [] },
+    { id: 2, user: '@vida_submarina', content: 'Hoje vi uma tartaruga marinha nadando entre os corais!', likes: 23, time: '4h', comments: [] },
+    { id: 3, user: '@mergulhador_pro', content: 'Descobri um novo recife de corais! As cores são incríveis!', likes: 8, time: '6h', comments: [] }
   ]);
 
-  const addPost = (content) => {
+  const addPost = (content, image = null) => {
     const currentUser = localStorage.getItem('currentUser');
     const newPost = {
       id: posts.length + 1,
       user: `@${currentUser}`,
       content,
       likes: 0,
-      time: 'agora'
+      time: 'agora',
+      image,
+      comments: []
     };
     setPosts([newPost, ...posts]);
   };
@@ -24,11 +26,34 @@ const usePosts = () => {
     ));
   };
 
-  return { posts, addPost, likePost };
+  const addComment = (postId, comment) => {
+    const currentUser = localStorage.getItem('currentUser');
+    const newComment = {
+      id: Date.now(),
+      user: currentUser,
+      text: comment,
+      time: 'agora'
+    };
+    setPosts(posts.map(post => 
+      post.id === postId ? { ...post, comments: [...post.comments, newComment] } : post
+    ));
+  };
+
+  return { posts, addPost, likePost, addComment };
 };
 
 // Componente de Post
-const Post = ({ post, onLike }) => {
+const Post = ({ post, onLike, onComment }) => {
+  const [showComments, setShowComments] = React.useState(false);
+  const [commentText, setCommentText] = React.useState('');
+
+  const handleComment = () => {
+    if (commentText.trim()) {
+      onComment(post.id, commentText);
+      setCommentText('');
+    }
+  };
+
   return React.createElement('div', { className: 'post' },
     React.createElement('div', { className: 'post-header' },
       React.createElement('h3', null, post.user),
@@ -41,8 +66,33 @@ const Post = ({ post, onLike }) => {
         onClick: () => onLike(post.id),
         className: 'like-btn'
       }, `♥ ${post.likes}`),
-      React.createElement('button', { className: 'comment-btn' }, 'Comentar'),
+      React.createElement('button', { 
+        onClick: () => setShowComments(!showComments),
+        className: 'comment-btn' 
+      }, `Comentar (${post.comments.length})`),
       React.createElement('button', { className: 'share-btn' }, 'Compartilhar')
+    ),
+    showComments && React.createElement('div', { style: { marginTop: '12px', padding: '12px', background: 'rgba(255,255,255,0.05)', borderRadius: '8px' } },
+      post.comments.map(comment =>
+        React.createElement('div', { key: comment.id, style: { marginBottom: '8px', fontSize: '14px' } },
+          React.createElement('strong', { style: { color: '#00d4ff' } }, comment.user + ': '),
+          comment.text
+        )
+      ),
+      React.createElement('div', { style: { display: 'flex', gap: '8px', marginTop: '8px' } },
+        React.createElement('input', {
+          type: 'text',
+          value: commentText,
+          onChange: (e) => setCommentText(e.target.value),
+          placeholder: 'Comentário...',
+          style: { flex: 1, padding: '6px 12px', borderRadius: '16px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: 'white' },
+          onKeyPress: (e) => e.key === 'Enter' && handleComment()
+        }),
+        React.createElement('button', { 
+          onClick: handleComment,
+          style: { padding: '6px 12px', background: '#00d4ff', color: 'white', border: 'none', borderRadius: '16px', cursor: 'pointer' }
+        }, 'Enviar')
+      )
     )
   );
 };
@@ -50,13 +100,27 @@ const Post = ({ post, onLike }) => {
 // Componente de criação de post
 const CreatePost = ({ onSubmit }) => {
   const [content, setContent] = React.useState('');
+  const [imageFile, setImageFile] = React.useState(null);
+  const [imagePreview, setImagePreview] = React.useState(null);
   const currentUser = localStorage.getItem('currentUser');
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImageFile(file);
+      const reader = new FileReader();
+      reader.onload = (e) => setImagePreview(e.target.result);
+      reader.readAsDataURL(file);
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (content.trim()) {
-      onSubmit(content);
+    if (content.trim() || imagePreview) {
+      onSubmit(content, imagePreview);
       setContent('');
+      setImageFile(null);
+      setImagePreview(null);
     }
   };
 
@@ -69,7 +133,28 @@ const CreatePost = ({ onSubmit }) => {
         placeholder: 'Compartilhe algo sobre o oceano...',
         rows: 3
       }),
-      React.createElement('button', { type: 'submit', className: 'post-btn' }, 'Publicar •')
+      imagePreview && React.createElement('div', { className: 'image-preview', style: { position: 'relative' } },
+        React.createElement('img', { src: imagePreview, alt: 'Preview', style: { width: '100%', maxHeight: '200px', objectFit: 'cover', borderRadius: '8px', marginTop: '10px' } }),
+        React.createElement('button', { 
+          type: 'button', 
+          onClick: () => { setImagePreview(null); setImageFile(null); },
+          style: { position: 'absolute', top: '15px', right: '5px', background: 'rgba(0,0,0,0.7)', color: 'white', border: 'none', borderRadius: '50%', width: '25px', height: '25px', cursor: 'pointer' }
+        }, '×')
+      ),
+      React.createElement('div', { className: 'post-controls', style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '10px' } },
+        React.createElement('input', {
+          type: 'file',
+          accept: 'image/*',
+          onChange: handleImageChange,
+          style: { display: 'none' },
+          id: 'image-upload'
+        }),
+        React.createElement('label', { 
+          htmlFor: 'image-upload',
+          style: { cursor: 'pointer', padding: '8px 16px', background: 'rgba(0,212,255,0.2)', borderRadius: '20px', color: '#00d4ff', border: 'none' }
+        }, '📷 Foto'),
+        React.createElement('button', { type: 'submit', className: 'post-btn' }, 'Publicar •')
+      )
     )
   );
 };
@@ -156,7 +241,7 @@ const Sidebar = () => {
 
 // Componente principal da Home
 const HomeMelhorado = () => {
-  const { posts, addPost, likePost } = usePosts();
+  const { posts, addPost, likePost, addComment } = usePosts();
   const [currentUser, setCurrentUser] = React.useState('');
 
   React.useEffect(() => {
@@ -199,7 +284,8 @@ const HomeMelhorado = () => {
             React.createElement(Post, { 
               key: post.id, 
               post: post, 
-              onLike: likePost 
+              onLike: likePost,
+              onComment: addComment
             })
           )
         )
