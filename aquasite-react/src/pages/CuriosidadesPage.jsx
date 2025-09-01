@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const ecosistemaData = [
-  { id: 1, nome: "Peixe-Palhaço", tipo: "Peixe", profundidade: "1-15m", curiosidade: "Vive em simbiose com anêmonas-do-mar, sendo imune ao seu veneno.", imagem: "🐠", cor: "#FF6347" },
+  { id: 1, nome: "Peixe-Palhaço", tipo: "Peixe", profundidade: "1-15m", curiosidade: "Vive em simbiose com anêmonas-do-mar, sendo imune ao seu veneno.", imagem: "/img/peixepalhaço.webp", cor: "#FF6347" },
   { id: 2, nome: "Peixe-Anjo", tipo: "Peixe", profundidade: "1-100m", curiosidade: "Muda de cor e padrão conforme cresce e muda de sexo.", imagem: "🐠", cor: "#FF69B4" },
   { id: 3, nome: "Peixe-Cirurgião", tipo: "Peixe", profundidade: "3-40m", curiosidade: "Possui espinhos venenosos nas nadadeiras para defesa.", imagem: "🐠", cor: "#4169E1" },
   { id: 4, nome: "Peixe-Borboleta", tipo: "Peixe", profundidade: "1-30m", curiosidade: "Tem padrões únicos que confundem predadores.", imagem: "🐠", cor: "#FFD700" },
@@ -31,7 +31,11 @@ const AnimalMarinho = ({ animal, onClick, isSelected }) => {
       onClick={() => onClick(animal)}
       style={{ borderColor: animal.cor }}
     >
-      <div className="animal-emoji">{animal.imagem}</div>
+      {animal.imagem.includes('.webp') || animal.imagem.includes('.jpg') ? (
+        <img src={animal.imagem} alt={animal.nome} style={{ width: '60px', height: '60px', borderRadius: '8px', objectFit: 'cover' }} />
+      ) : (
+        <div className="animal-emoji">{animal.imagem}</div>
+      )}
       <h3>{animal.nome}</h3>
       <span className="animal-tipo">{animal.tipo}</span>
     </div>
@@ -49,7 +53,11 @@ const DetalhesAnimal = ({ animal, onClose }) => {
         style={{ borderColor: animal.cor }}
       >
         <button className="close-btn" onClick={onClose}>×</button>
-        <div className="animal-emoji-large">{animal.imagem}</div>
+        {animal.imagem.includes('.webp') || animal.imagem.includes('.jpg') ? (
+          <img src={animal.imagem} alt={animal.nome} style={{ width: '120px', height: '120px', borderRadius: '12px', objectFit: 'cover', marginBottom: '16px' }} />
+        ) : (
+          <div className="animal-emoji-large">{animal.imagem}</div>
+        )}
         <h2>{animal.nome}</h2>
         <div className="animal-info">
           <p><strong>Tipo:</strong> {animal.tipo}</p>

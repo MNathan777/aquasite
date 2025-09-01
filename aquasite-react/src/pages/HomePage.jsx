@@ -3,9 +3,9 @@ import { useNavigate, Link } from 'react-router-dom'
 
 const usePosts = () => {
   const [posts, setPosts] = useState([
-    { id: 1, user: '@oceano_lindo', content: 'Olhem só esse pôr do sol sobre o mar!', likes: 15, time: '2h', image: null, comments: [] },
-    { id: 2, user: '@vida_submarina', content: 'Hoje vi uma tartaruga marinha nadando entre os corais!', likes: 23, time: '4h', comments: [] },
-    { id: 3, user: '@mergulhador_pro', content: 'Descobri um novo recife de corais! As cores são incríveis!', likes: 8, time: '6h', comments: [] }
+    { id: 1, user: '@oceano_lindo', content: 'Olhem só esse pôr do sol sobre o mar!', likes: 15, time: '2h', image: '/img/pordosol.jpg', comments: [] },
+    { id: 2, user: '@vida_submarina', content: 'Hoje vi uma tartaruga marinha nadando entre os corais!', likes: 23, time: '4h', image: '/img/golfinho.jpg', comments: [] },
+    { id: 3, user: '@mergulhador_pro', content: 'Descobri um novo recife de corais! As cores são incríveis!', likes: 8, time: '6h', image: '/img/peixes.jpg', comments: [] }
   ]);
 
   const addPost = (content, image = null) => {
