@@ -16,20 +16,7 @@
 <body>
   <div id="index-melhorado-root"></div>
 
-  <!-- React e ReactDOM via CDN -->
-  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-
-  <!-- Babel para usar JSX -->
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-  <!-- Componentes da Index Melhorada -->
-  <script type="text/babel" src="index-melhorado.jsx"></script>
-
-  <!-- Inicialização da aplicação -->
-  <script type="text/babel">
-    const indexMelhoradoRoot = ReactDOM.createRoot(document.getElementById('index-melhorado-root'));
-    indexMelhoradoRoot.render(React.createElement(AppMelhorado));
-  </script>
+  <script type="module" src="/src/main.jsx"></script>
+  <script src="bubbles.js"></script>
 </body>
 </html>

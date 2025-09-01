@@ -1222,5 +1222,42 @@ body {
   box-shadow: 0 0 20px rgba(0, 180, 216, 0.6);
 }
 
+/* Bolhas animadas de fundo */
+.bubbles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
 
+.bubble {
+  position: absolute;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(0, 212, 255, 0.2) 50%, transparent 100%);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  backdrop-filter: blur(4px);
+  animation: bubbleFloat linear infinite;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+}
+
+@keyframes bubbleFloat {
+  0% {
+    transform: translateY(100vh) scale(0.3);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  90% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-100px) scale(1.2);
+    opacity: 0;
+  }
+}
 
