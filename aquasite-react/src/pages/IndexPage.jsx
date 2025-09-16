@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import './TwitterLayout.css'
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -242,19 +243,148 @@ const FooterMelhorado = () => {
   );
 };
 
-const IndexPage = () => {
+const LoginForm = () => {
+  const [isLogin, setIsLogin] = useState(true)
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [statusMsg, setStatusMsg] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const navigate = useNavigate()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setIsLoading(true)
+    
+    if (!username.trim() || !password) {
+      setStatusMsg('Preencha todos os campos.')
+      setIsLoading(false)
+      return
+    }
+
+    // Simulação de requisição async
+    await new Promise(resolve => setTimeout(resolve, 800))
+
+    if (isLogin) {
+      const storedUser = localStorage.getItem(username)
+      if (storedUser && JSON.parse(storedUser).password === password) {
+        localStorage.setItem('currentUser', username)
+        setStatusMsg(`✓ Bem-vindo, ${username}!`)
+        setTimeout(() => {
+          navigate('/home')
+        }, 1200)
+      } else {
+        setStatusMsg('⚠ Usuário ou senha incorretos.')
+      }
+    } else {
+      if (localStorage.getItem(username)) {
+        setStatusMsg('⚠ Usuário já existe.')
+      } else {
+        localStorage.setItem(username, JSON.stringify({ password }))
+        setStatusMsg('✓ Conta criada com sucesso!')
+        setTimeout(() => {
+          setIsLogin(true)
+          setStatusMsg('')
+          setPassword('')
+        }, 1500)
+      }
+    }
+    setIsLoading(false)
+  }
+
   return (
-    <div className="index-melhorado fade-in">
-      <HeaderMelhorado />
-      <main>
-        <HeroSection />
-        <StatsSection />
-        <FeaturesSection />
-        <TestimonialsSection />
-      </main>
-      <FooterMelhorado />
+    <div className="login-card-twitter">
+      <div className="twitter-logo">🌊</div>
+      
+      <h1 className="main-heading">Explore o mundo marinho</h1>
+      
+      <h2 className="sub-heading">{isLogin ? 'Entre no AquaSite' : 'Crie sua conta'}</h2>
+      
+      <form onSubmit={handleSubmit} className="login-form-twitter">
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Nome de usuário"
+          required
+        />
+        
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Senha"
+          required
+        />
+        
+        <button type="submit" className="btn-submit-twitter" disabled={isLoading}>
+          {isLoading ? (
+            <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+              <span className="spinner"></span>
+              {isLogin ? 'Entrando...' : 'Criando...'}
+            </span>
+          ) : (
+            isLogin ? 'Entrar' : 'Criar conta'
+          )}
+        </button>
+      </form>
+      
+      {statusMsg && (
+        <div className="status-msg-twitter">{statusMsg}</div>
+      )}
+      
+      <div className="toggle-section-twitter">
+        <p style={{ color: '#71767b', marginBottom: '1rem' }}>
+          {isLogin ? 'Não tem uma conta?' : 'Já tem uma conta?'}
+        </p>
+        <button 
+          onClick={() => { setIsLogin(!isLogin); setStatusMsg(''); setPassword(''); }}
+          className="toggle-btn"
+        >
+          {isLogin ? 'Inscrever-se' : 'Entrar'}
+        </button>
+      </div>
+      
+      <Link to="/curiosidades" className="btn-explore">
+        Explorar sem fazer login
+      </Link>
     </div>
-  );
+  )
+}
+
+const IndexPage = () => {
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const slides = [
+    { title: "Explore o Mundo Marinho", subtitle: "Descubra as maravilhas dos oceanos" },
+    { title: "Vida Submarina", subtitle: "Conheça criaturas incríveis" },
+    { title: "Conservação Oceânica", subtitle: "Proteja nossos mares" }
+  ]
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length)
+    }, 4000)
+    return () => clearInterval(timer)
+  }, [])
+
+  return (
+    <div className="twitter-layout">
+      <div className="left-section">
+        <div className="hero-content-twitter">
+          <h1 className="hero-title-twitter">🌊</h1>
+          <div className="features-mini">
+            <div className="feature-mini">🐠 Explore 230.000+ espécies marinhas</div>
+            <div className="feature-mini">🌊 Descubra que 71% da Terra é oceano</div>
+            <div className="feature-mini">🔬 Navegue pelos 95% dos oceanos inexplorados</div>
+            <div className="feature-mini">👥 Junte-se a 1000+ exploradores marinhos</div>
+          </div>
+        </div>
+      </div>
+
+      <div className="right-section">
+        <LoginForm />
+      </div>
+    </div>
+  )
 };
 
 export default IndexPage
