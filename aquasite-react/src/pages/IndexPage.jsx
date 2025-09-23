@@ -353,6 +353,7 @@ const LoginForm = () => {
 
 const IndexPage = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [clickBubbles, setClickBubbles] = useState([])
   const slides = [
     { title: "Explore o Mundo Marinho", subtitle: "Descubra as maravilhas dos oceanos" },
     { title: "Vida Submarina", subtitle: "Conheça criaturas incríveis" },
@@ -366,18 +367,43 @@ const IndexPage = () => {
     return () => clearInterval(timer)
   }, [])
 
+  const handleClick = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    
+    const newBubble = {
+      id: Date.now(),
+      x,
+      y,
+      size: Math.random() * 20 + 15
+    }
+    
+    setClickBubbles(prev => [...prev, newBubble])
+    
+    setTimeout(() => {
+      setClickBubbles(prev => prev.filter(bubble => bubble.id !== newBubble.id))
+    }, 800)
+  }
+
   return (
     <div className="twitter-layout">
-      <div className="left-section">
+      <div className="left-section" onClick={handleClick}>
         <div className="hero-content-twitter">
-          <h1 className="hero-title-twitter">🌊</h1>
-          <div className="features-mini">
-            <div className="feature-mini">🐠 Explore 230.000+ espécies marinhas</div>
-            <div className="feature-mini">🌊 Descubra que 71% da Terra é oceano</div>
-            <div className="feature-mini">🔬 Navegue pelos 95% dos oceanos inexplorados</div>
-            <div className="feature-mini">👥 Junte-se a 1000+ exploradores marinhos</div>
-          </div>
+          <h1 className="hero-title-twitter">AquaSite</h1>
         </div>
+        {clickBubbles.map(bubble => (
+          <div
+            key={bubble.id}
+            className="click-bubble"
+            style={{
+              left: bubble.x,
+              top: bubble.y,
+              width: bubble.size,
+              height: bubble.size
+            }}
+          />
+        ))}
       </div>
 
       <div className="right-section">

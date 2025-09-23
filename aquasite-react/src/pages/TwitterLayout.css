@@ -29,18 +29,10 @@
   position: relative;
   background: linear-gradient(135deg, #001f3f 0%, #003f5c 25%, #005f73 50%, #0a9396 75%, #94d3a2 100%);
   overflow: hidden;
+  cursor: pointer;
 }
 
-.left-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path d="M20,50 Q40,30 60,50 T100,50" stroke="rgba(255,255,255,0.1)" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M150,80 Q170,60 190,80" stroke="rgba(0,212,255,0.2)" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="30" cy="150" r="3" fill="rgba(144,224,239,0.15)"/><path d="M80,120 L85,115 L90,125 L95,118" stroke="rgba(255,255,255,0.08)" stroke-width="2" fill="none" stroke-linecap="round"/></svg>');
-  animation: float 20s ease-in-out infinite;
-}
+
 
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
@@ -65,6 +57,84 @@
   100% { background-position: 0% 50%; }
 }
 
+.bubble-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  pointer-events: none;
+}
+
+.bubble {
+  position: absolute;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(0,212,255,0.3));
+  border-radius: 50%;
+  cursor: pointer;
+  pointer-events: all;
+  animation: bubbleFloat 4s ease-in-out infinite;
+  box-shadow: 
+    inset -2px -2px 4px rgba(0,0,0,0.1),
+    0 0 10px rgba(0,212,255,0.2);
+  transition: all 0.3s ease;
+}
+
+.bubble:hover {
+  transform: scale(1.1);
+  box-shadow: 
+    inset -2px -2px 4px rgba(0,0,0,0.1),
+    0 0 15px rgba(0,212,255,0.4);
+}
+
+.bubble.popped {
+  animation: bubblePop 0.6s ease-out forwards;
+}
+
+@keyframes bubbleFloat {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-10px) scale(1.05); }
+}
+
+@keyframes bubblePop {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+.click-bubble {
+  position: absolute;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(0,212,255,0.4));
+  border-radius: 50%;
+  pointer-events: none;
+  animation: clickBubblePop 0.8s ease-out forwards;
+  box-shadow: 0 0 15px rgba(0,212,255,0.3);
+  z-index: 10;
+}
+
+@keyframes clickBubblePop {
+  0% {
+    transform: scale(0) translate(-50%, -50%);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(1.2) translate(-50%, -50%);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2) translate(-50%, -50%);
+    opacity: 0;
+  }
+}
+
 .hero-content-twitter {
   max-width: 600px;
   text-align: left;
@@ -73,9 +143,9 @@
 }
 
 .hero-title-twitter {
-  font-size: 10rem;
+  font-size: 8rem;
   font-weight: 900;
-  margin-bottom: 2rem;
+  margin: 0;
   background: linear-gradient(45deg, #00d4ff, #90e0ef, #ffffff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -85,17 +155,10 @@
   filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.4));
   transform: rotate(-2deg);
   position: relative;
+  font-family: 'Kalam', cursive;
 }
 
-.hero-title-twitter::after {
-  content: '~';
-  position: absolute;
-  top: -20px;
-  right: -30px;
-  font-size: 3rem;
-  color: rgba(0, 212, 255, 0.3);
-  animation: wiggle 2s ease-in-out infinite;
-}
+
 
 @keyframes wobble {
   0%, 100% { transform: rotate(-2deg) scale(1); }
