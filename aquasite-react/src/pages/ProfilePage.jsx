@@ -84,8 +84,8 @@ const ProfilePage = () => {
             </div>
           </div>
           <div className="user-info">
-            <h1>{userProfile.username}</h1>
-            <p className="join-date">Membro desde {userProfile.joinDate}</p>
+            <h1>Perfil</h1>
+            <p className="join-date">{userProfile.username} - Membro desde {userProfile.joinDate}</p>
           </div>
           <div className="profile-actions">
             <button 

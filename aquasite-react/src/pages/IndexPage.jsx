@@ -5,18 +5,8 @@ import './TwitterLayout.css'
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
-    {
-      title: "Explore o Mundo Marinho",
-      subtitle: "Descubra as maravilhas dos oceanos"
-    },
-    {
-      title: "Vida Submarina",
-      subtitle: "Conheça criaturas incríveis"
-    },
-    {
-      title: "Conservação Oceânica",
-      subtitle: "Proteja nossos mares"
-    }
+
+    
   ];
 
   useEffect(() => {

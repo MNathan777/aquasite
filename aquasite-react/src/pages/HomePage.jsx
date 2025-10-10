@@ -271,7 +271,7 @@ const HomePage = () => {
     <div className="home-container">
       <header className="home-header">
         <div className="header-content">
-          <h1>AquaSite</h1>
+          <h1>Home</h1>
           <nav>
             <Link to="/">• Início</Link>
             <Link to="/curiosidades">• Explorar</Link>

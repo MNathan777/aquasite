@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import IndexPage from './pages/IndexPage'
 import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
@@ -9,9 +9,9 @@ import SobrePage from './pages/SobrePage'
 import Bubbles from './components/Bubbles'
 import './App.css'
 
-function App() {
+function AppContent() {
   return (
-    <Router>
+    <>
       <Bubbles />
       <Routes>
         <Route path="/" element={<IndexPage />} />
@@ -21,6 +21,14 @@ function App() {
         <Route path="/curiosidades" element={<CuriosidadesPage />} />
         <Route path="/sobre" element={<SobrePage />} />
       </Routes>
+    </>
+  )
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   )
 }
